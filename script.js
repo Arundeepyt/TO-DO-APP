@@ -3,34 +3,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const taskInput = document.getElementById("new-task");
   const taskList = document.getElementById("task-list");
 
-  function createTask(taskText) {
-    const li = document.createElement("li");
-    li.className = "task-item";
-
-    const span = document.createElement("span");
-    span.className = "task-text";
-    span.textContent = taskText;
-
-    const deleteBtn = document.createElement("button");
-    deleteBtn.className = "delete-btn";
-    deleteBtn.textContent = "Delete";
-
-    deleteBtn.addEventListener("click", () => {
-      li.classList.add("fade-out");
-      li.addEventListener("animationend", () => {
-        li.remove();
-      });
-    });
-
-    li.appendChild(span);
-    li.appendChild(deleteBtn);
-    taskList.appendChild(li);
-  }
-
   addTaskBtn.addEventListener("click", () => {
     const taskText = taskInput.value.trim();
     if (taskText !== "") {
-      createTask(taskText);
+      const li = document.createElement("li");
+      li.classList.add("task-item");
+
+      const span = document.createElement("span");
+      span.classList.add("task-text");
+      span.textContent = taskText;
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.classList.add("delete-btn");
+      deleteBtn.textContent = "Delete";
+
+      deleteBtn.addEventListener("click", () => {
+        li.remove(); // Works perfectly
+      });
+
+      li.appendChild(span);
+      li.appendChild(deleteBtn);
+      taskList.appendChild(li);
+
       taskInput.value = "";
     }
   });
