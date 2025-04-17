@@ -1,11 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const addTaskBtn = document.getElementById("add-task-btn");
-  const taskInput = document.getElementById("new-task");
-  const taskList = document.querySelector(".task-list");
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const addTaskBtn = document.getElementById("add-task-btn");
+    const taskInput = document.getElementById("new-task");
+    const taskList = document.querySelector(".task-list");
 
-  addTaskBtn.addEventListener("click", () => {
-    const taskText = taskInput.value.trim();
-    if (taskText !== "") {
+    function createTask(taskText) {
       const li = document.createElement("li");
 
       const span = document.createElement("span");
@@ -18,19 +17,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
       delBtn.addEventListener("click", () => {
         li.classList.add("fade-out");
-        li.addEventListener("animationend", () => li.remove());
+        li.addEventListener("animationend", () => {
+          li.remove();
+        });
       });
 
       li.appendChild(span);
       li.appendChild(delBtn);
       taskList.appendChild(li);
-
-      taskInput.value = "";
     }
-  });
 
-  // Optional: Enter key triggers Add
-  taskInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") addTaskBtn.click();
+    addTaskBtn.addEventListener("click", () => {
+      const taskText = taskInput.value.trim();
+      if (taskText !== "") {
+        createTask(taskText);
+        taskInput.value = "";
+      }
+    });
+
+    taskInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") addTaskBtn.click();
+    });
   });
-});
+</script>
