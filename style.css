@@ -6,19 +6,19 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: #0f0f0f; /* Dark background to make neon elements pop */
+    background: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #fff;
+    color: #333;
 }
 
 .app-container {
-    background: #1a1a1a;
+    background: #fff;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     width: 350px;
     text-align: center;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -32,8 +32,7 @@ body {
 .app-title {
     font-size: 28px;
     font-weight: bold;
-    color: #00f7ff; /* Neon blue text */
-    text-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff, 0 0 30px #00f7ff, 0 0 40px #00f7ff;
+    color: #3b82f6;
     margin-bottom: 20px;
 }
 
@@ -50,37 +49,32 @@ body {
     border: 1px solid #ddd;
     border-radius: 8px;
     outline: none;
-    background: #333;
-    color: #fff;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease;
 }
 
 #new-task:focus {
-    border-color: #00f7ff;
-    box-shadow: 0 0 10px #00f7ff;
+    border-color: #3b82f6;
 }
 
 #add-task-btn {
-    background: #00f7ff;
+    background: #3b82f6;
     color: #fff;
     padding: 12px 20px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 18px;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     outline: none;
 }
 
 #add-task-btn:hover {
-    background-color: #00b3b3;
+    background-color: #2563eb;
     transform: scale(1.05);
-    box-shadow: 0 0 20px #00f7ff;
 }
 
 #add-task-btn:focus {
-    background-color: #00b3b3;
-    box-shadow: 0 0 20px #00f7ff;
+    background-color: #1d4ed8;
 }
 
 .task-list {
@@ -90,18 +84,18 @@ body {
 }
 
 .task-list li {
-    background: #222;
+    background: #f9fafb;
     border-radius: 8px;
     margin-bottom: 15px;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 0.5s forwards;
-    transition: transform 0.3s ease;
 }
 
 .task-list li:hover {
@@ -110,8 +104,7 @@ body {
 
 .task-list li .task-text {
     font-size: 16px;
-    color: #fff;
-    text-shadow: 0 0 5px #ff00f7, 0 0 10px #ff00f7, 0 0 15px #ff00f7; /* Neon pink glow on text */
+    color: #333;
 }
 
 .task-list li .delete-btn {
@@ -122,13 +115,12 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .task-list li .delete-btn:hover {
     background-color: #ef4444;
     transform: scale(1.1);
-    box-shadow: 0 0 10px #ff00f7;
 }
 
 /* Keyframes for smooth task fading animation */
