@@ -1,29 +1,29 @@
 body {
   font-family: 'Poppins', sans-serif;
-  background: #f0f8ff;
+  background: linear-gradient(to right, #00f2fe, #4facfe);
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: start;
   min-height: 100vh;
-  background: linear-gradient(to right, #8e2de2, #4a00e0);
 }
 
 .app-container {
-  background-color: #fff;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   padding: 30px;
-  margin-top: 50px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  margin-top: 60px;
+  box-shadow: 0 0 30px #4facfe;
   width: 90%;
   max-width: 500px;
 }
 
 .app-title {
   text-align: center;
-  color: #4a00e0;
+  color: #0f0f0f;
   font-size: 2.5rem;
+  text-shadow: 0 0 8px #4facfe;
 }
 
 .input-container {
@@ -34,7 +34,7 @@ body {
 .input-container input {
   flex: 1;
   padding: 12px;
-  border: 2px solid #4a00e0;
+  border: 2px solid #4facfe;
   border-radius: 10px 0 0 10px;
   outline: none;
 }
@@ -42,11 +42,12 @@ body {
 .input-container button {
   padding: 12px;
   border: none;
-  background: #4a00e0;
+  background: #4facfe;
   color: white;
   font-size: 1.5rem;
   border-radius: 0 10px 10px 0;
   cursor: pointer;
+  box-shadow: 0 0 10px #4facfe;
 }
 
 .task-list {
@@ -56,15 +57,14 @@ body {
 }
 
 .task-item {
-  background: #f9f9f9;
-  border-left: 5px solid #4a00e0;
+  background: #f2f2f2;
   padding: 12px;
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-left: 5px solid #4facfe;
   border-radius: 8px;
-  transition: 0.3s ease;
 }
 
 .delete-btn {
@@ -74,15 +74,5 @@ body {
   padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
-}
-
-.fade-out {
-  animation: fadeOut 0.4s forwards;
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    transform: translateX(100%);
-  }
+  box-shadow: 0 0 5px #ff4d4d;
 }
