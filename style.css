@@ -1,4 +1,4 @@
-/* Reset and base */
+/* Reset & base styles */
 * {
   margin: 0;
   padding: 0;
@@ -8,14 +8,19 @@
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  background-image: radial-gradient(circle at top left, #ffe3ec, transparent 30%),
+                    radial-gradient(circle at bottom right, #d0f1ff, transparent 40%),
+                    radial-gradient(circle at center, #ffffff, #e3f6ff);
+  background-blend-mode: screen;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
   color: #333;
 }
 
-/* Container */
+/* Main container */
 .app-container {
   background: linear-gradient(to right, #ffffff, #e1f4fd);
   padding: 30px 25px;
@@ -26,7 +31,7 @@ body {
 }
 
 .app-container:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: 0 0 30px rgba(0, 195, 255, 0.4);
 }
 
@@ -39,16 +44,16 @@ body {
   -webkit-text-fill-color: transparent;
   text-align: center;
   margin-bottom: 25px;
-  animation: pulseText 2s infinite alternate;
+  animation: glowText 2s infinite alternate;
 }
 
-@keyframes pulseText {
+@keyframes glowText {
   to {
     text-shadow: 0 0 8px #ff6ec4;
   }
 }
 
-/* Input Row */
+/* Input area */
 .input-container {
   display: flex;
   gap: 10px;
@@ -61,9 +66,9 @@ body {
   border-radius: 10px;
   border: 2px solid transparent;
   font-size: 16px;
-  outline: none;
   background: #f2f9ff;
   transition: all 0.3s ease;
+  outline: none;
 }
 
 #new-task:focus {
@@ -71,7 +76,7 @@ body {
   box-shadow: 0 0 12px #00c3ff80;
 }
 
-/* Add Button */
+/* Add button */
 #add-task-btn {
   background: linear-gradient(to right, #00c3ff, #6a00ff);
   color: white;
@@ -89,7 +94,7 @@ body {
   box-shadow: 0 0 20px rgba(106, 0, 255, 0.5);
 }
 
-/* Task List */
+/* Task list */
 .task-list {
   list-style: none;
   margin-top: 20px;
