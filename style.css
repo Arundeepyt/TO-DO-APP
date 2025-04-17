@@ -17,8 +17,8 @@ body {
 .app-container {
     background: #fff;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     width: 350px;
     text-align: center;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -33,13 +33,13 @@ body {
     font-size: 28px;
     font-weight: bold;
     color: #3b82f6;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .input-container {
     display: flex;
     gap: 12px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 #new-task {
@@ -64,12 +64,17 @@ body {
     border-radius: 8px;
     cursor: pointer;
     font-size: 18px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    outline: none;
 }
 
 #add-task-btn:hover {
     background-color: #2563eb;
     transform: scale(1.05);
+}
+
+#add-task-btn:focus {
+    background-color: #1d4ed8;
 }
 
 .task-list {
@@ -87,10 +92,10 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 0.5s forwards;
-    transition: transform 0.3s ease;
 }
 
 .task-list li:hover {
@@ -118,7 +123,7 @@ body {
     transform: scale(1.1);
 }
 
-/* Animation for adding tasks */
+/* Keyframes for smooth task fading animation */
 @keyframes fadeIn {
     to {
         opacity: 1;
@@ -126,7 +131,7 @@ body {
     }
 }
 
-/* Fade-out animation for task deletion */
+/* Animation for smooth task removal */
 .fade-out {
     animation: fadeOut 0.3s forwards;
 }
