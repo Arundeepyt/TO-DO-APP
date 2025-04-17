@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createTask(taskText) {
     const li = document.createElement("li");
+    li.className = "task-item";
 
     const span = document.createElement("span");
     span.className = "task-text";
@@ -14,11 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     delBtn.className = "delete-btn";
     delBtn.innerText = "Delete";
 
+    // Delete logic
     delBtn.addEventListener("click", () => {
-      li.classList.add("fade-out");
-      li.addEventListener("animationend", () => {
-        li.remove();
-      });
+      li.remove(); // Immediate removal for now
     });
 
     li.appendChild(span);
@@ -35,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   taskInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") addTaskBtn.click();
+    if (e.key === "Enter") {
+      addTaskBtn.click();
+    }
   });
 });
