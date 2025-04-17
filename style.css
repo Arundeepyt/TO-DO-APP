@@ -1,69 +1,139 @@
-/* Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right, #4A90E2, #9013FE);
+    font-family: 'Arial', sans-serif;
+    background: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    color: #333;
 }
 
-.container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 300px;
+.app-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 350px;
     text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-input {
-    width: 70%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#addTaskButton {
-    background: #28a745;
-    color: white;
-    transition: 0.3s;
-}
-
-#addTaskButton:hover {
-    background: #218838;
-}
-
-.delete {
-    background: #dc3545;
-    color: white;
-    transition: 0.3s;
-}
-
-.delete:hover {
-    background: #c82333;
-}
-
-/* Animations */
-.task {
-    opacity: 0;
+.app-container:hover {
     transform: translateY(-10px);
-    animation: fadeIn 0.3s forwards;
+    opacity: 0.95;
 }
 
+.app-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #3b82f6;
+    margin-bottom: 25px;
+}
+
+.input-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+#new-task {
+    flex-grow: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#new-task:focus {
+    border-color: #3b82f6;
+}
+
+#add-task-btn {
+    background: #3b82f6;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#add-task-btn:hover {
+    background-color: #2563eb;
+    transform: scale(1.05);
+}
+
+.task-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.task-list li {
+    background: #f9fafb;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s forwards;
+    transition: transform 0.3s ease;
+}
+
+.task-list li:hover {
+    transform: translateY(-5px);
+}
+
+.task-list li .task-text {
+    font-size: 16px;
+    color: #333;
+}
+
+.task-list li .delete-btn {
+    background: #f87171;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.task-list li .delete-btn:hover {
+    background-color: #ef4444;
+    transform: scale(1.1);
+}
+
+/* Animation for adding tasks */
 @keyframes fadeIn {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
 }
+
+/* Fade-out animation for task deletion */
+.fade-out {
+    animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 }
