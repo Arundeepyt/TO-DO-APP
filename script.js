@@ -1,80 +1,41 @@
-document.addEventListener("DOMContentLoaded", loadTasks);
 
-const taskInput = document.getElementById("taskInput");
-const addTaskButton = document.getElementById("addTaskButton");
-const taskList = document.getElementById("taskList");
+const addTaskBtn = document.getElementById('add-task-btn');
+const newTaskInput = document.getElementById('new-task');
+const taskList = document.getElementById('task-list');
 
-addTaskButton.addEventListener("click", addTask);
+function createTaskElement(taskText) {
+  const li = document.createElement('li');
 
-function addTask() {
-    const taskText = taskInput.value.trim();
-    if (taskText === "") return;
+  const span = document.createElement('span');
+  span.className = 'task-text';
+  span.textContent = taskText;
 
-    const taskItem = document.createElement("li");
-    taskItem.classList.add("task");
+  const deleteBtn = document.createElement('button');
+  deleteBtn.className = 'delete-btn';
+  deleteBtn.textContent = 'Delete';
 
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-
-    const taskSpan = document.createElement("span");
-    taskSpan.textContent = taskText;
-
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
-    deleteButton.classList.add("delete");
-    deleteButton.addEventListener("click", () => {
-        taskItem.classList.add("fade-out");
-        setTimeout(() => {
-            taskItem.remove();
-            saveTasks();
-        }, 300); 
+  deleteBtn.addEventListener('click', () => {
+    li.classList.add('fade-out');
+    li.addEventListener('animationend', () => {
+      li.remove();
     });
+  });
 
-    taskItem.appendChild(checkbox);
-    taskItem.appendChild(taskSpan);
-    taskItem.appendChild(deleteButton);
-    taskList.appendChild(taskItem);
-
-    taskInput.value = "";
-    saveTasks();
+  li.appendChild(span);
+  li.appendChild(deleteBtn);
+  taskList.appendChild(li);
 }
 
-// Save tasks to local storage
-function saveTasks() {
-    const tasks = [];
-    document.querySelectorAll("#taskList li span").forEach(task => {
-        tasks.push(task.textContent);
-    });
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-}
+addTaskBtn.addEventListener('click', () => {
+  const taskText = newTaskInput.value.trim();
+  if (taskText !== '') {
+    createTaskElement(taskText);
+    newTaskInput.value = '';
+  }
+});
 
-// Load tasks from local storage
-function loadTasks() {
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.forEach(taskText => {
-        const taskItem = document.createElement("li");
-        taskItem.classList.add("task");
-
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-
-        const taskSpan = document.createElement("span");
-        taskSpan.textContent = taskText;
-
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.classList.add("delete");
-        deleteButton.addEventListener("click", () => {
-            taskItem.classList.add("fade-out");
-            setTimeout(() => {
-                taskItem.remove();
-                saveTasks();
-            }, 300);
-        });
-
-        taskItem.appendChild(checkbox);
-        taskItem.appendChild(taskSpan);
-        taskItem.appendChild(deleteButton);
-        taskList.appendChild(taskItem);
-    });
-}
+newTaskInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    addTaskBtn.click();
+  }
+});
