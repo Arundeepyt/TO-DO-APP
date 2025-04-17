@@ -9,19 +9,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const span = document.createElement("span");
     span.className = "task-text";
-    span.innerText = taskText;
+    span.textContent = taskText;
 
-    const delBtn = document.createElement("button");
-    delBtn.className = "delete-btn";
-    delBtn.innerText = "Delete";
+    const deleteBtn = document.createElement("button");
+    deleteBtn.className = "delete-btn";
+    deleteBtn.textContent = "Delete";
 
-    // Delete logic
-    delBtn.addEventListener("click", () => {
-      li.remove(); // Immediate removal for now
+    deleteBtn.addEventListener("click", () => {
+      li.classList.add("fade-out");
+      li.addEventListener("animationend", () => {
+        li.remove();
+      });
     });
 
     li.appendChild(span);
-    li.appendChild(delBtn);
+    li.appendChild(deleteBtn);
     taskList.appendChild(li);
   }
 
