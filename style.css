@@ -1,29 +1,59 @@
+@keyframes neon-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px #4facfe, 0 0 20px #00f2fe, 0 0 30px #00f2fe;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+  }
+}
+
+@keyframes backgroundShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, #00f2fe, #4facfe);
+  background: linear-gradient(270deg, #4facfe, #00f2fe, #ff00ff, #00f2fe);
+  background-size: 600% 600%;
+  animation: backgroundShift 15s ease infinite;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: start;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .app-container {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   border-radius: 20px;
   padding: 30px;
   margin-top: 60px;
-  box-shadow: 0 0 30px #4facfe;
+  box-shadow: 0 0 20px #00f2fe;
   width: 90%;
   max-width: 500px;
+  animation: neon-glow 2s infinite alternate;
 }
 
 .app-title {
   text-align: center;
-  color: #0f0f0f;
+  color: #00f2fe;
   font-size: 2.5rem;
-  text-shadow: 0 0 8px #4facfe;
+  text-shadow: 0 0 10px #00f2fe;
 }
 
 .input-container {
@@ -34,20 +64,30 @@ body {
 .input-container input {
   flex: 1;
   padding: 12px;
-  border: 2px solid #4facfe;
+  border: 2px solid #00f2fe;
   border-radius: 10px 0 0 10px;
   outline: none;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 0 10px #00f2fe;
 }
 
 .input-container button {
   padding: 12px;
   border: none;
-  background: #4facfe;
+  background: #00f2fe;
   color: white;
   font-size: 1.5rem;
   border-radius: 0 10px 10px 0;
   cursor: pointer;
-  box-shadow: 0 0 10px #4facfe;
+  box-shadow: 0 0 15px #00f2fe;
+  transition: transform 0.2s ease, background 0.4s;
+}
+
+.input-container button:hover {
+  transform: scale(1.1);
+  background: #ff00ff;
+  box-shadow: 0 0 20px #ff00ff;
 }
 
 .task-list {
@@ -57,14 +97,22 @@ body {
 }
 
 .task-item {
-  background: #f2f2f2;
+  background: rgba(255, 255, 255, 0.05);
   padding: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-left: 5px solid #4facfe;
+  border-left: 5px solid #00f2fe;
   border-radius: 8px;
+  color: white;
+  animation: fadeSlideIn 0.5s ease forwards;
+  box-shadow: 0 0 10px #00f2fe;
+}
+
+.task-text {
+  flex: 1;
+  padding-right: 10px;
 }
 
 .delete-btn {
@@ -74,5 +122,11 @@ body {
   padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 0 5px #ff4d4d;
+  box-shadow: 0 0 8px #ff4d4d;
+  transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: #ff0000;
+  box-shadow: 0 0 12px #ff0000;
 }
